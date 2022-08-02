@@ -2,30 +2,40 @@ package com.qa.controllers;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qa.demo.AccountRepo;
 import com.qa.entities.Account;
+import com.qa.entities.AccountDTO;
 
 @Service
 public class AccountService {
 	
 	private AccountRepo repo;
+	
+	private ModelMapper mapper;
+
+    private AccountDTO mapToDTO(Account account) {
+        return mapper.map(account, AccountDTO.class);
+    }
     
 	@Autowired
-    public AccountService(AccountRepo repo) {
+    public AccountService(AccountRepo repo, ModelMapper mapper) {
         super();
         this.repo = repo;
+        this.mapper = mapper;
     }
         
     public Account addAccount(Account account) {
     	return this.repo.save(account);
     }
 
-    public List<Account> getAllAccounts() {
-        return repo.findAll();
+    public List<AccountDTO> getAllAccounts() {
+        return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
 	}
     
     public Account searchEmail(String email) {

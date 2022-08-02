@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.entities.Account;
+import com.qa.entities.AccountDTO;
 
 @Service
 @RestController
@@ -31,7 +32,7 @@ public class AccountController {
     }
     
     @GetMapping("/getAll")
-    public List<Account> getAll(){
+    public List<AccountDTO> getAll(){
     	return service.getAllAccounts();
     }
     

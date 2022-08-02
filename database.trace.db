@@ -1,0 +1,12 @@
+2022-08-02 12:31:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found (this database is empty); SQL statement:
+select account0_.id as id1_0_, account0_.email as email2_0_, account0_.first_name as first_na3_0_, account0_.last_name as last_nam4_0_ from account account0_ [42104-214]
+2022-08-02 12:31:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found (this database is empty); SQL statement:
+select account0_.id as id1_0_, account0_.email as email2_0_, account0_.first_name as first_na3_0_, account0_.last_name as last_nam4_0_ from account account0_ [42104-214]
+2022-08-02 12:31:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found (this database is empty); SQL statement:
+select account0_.id as id1_0_, account0_.email as email2_0_, account0_.first_name as first_na3_0_, account0_.last_name as last_nam4_0_ from account account0_ [42104-214]
+2022-08-02 12:32:22 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ACCOUNT" not found (this database is empty); SQL statement:
+insert into account (id, email, first_name, last_name) values (default, ?, ?, ?) [42104-214]

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.qa.demo.AccountRepo;
 import com.qa.entities.Account;
 import com.qa.entities.AccountDTO;
+import com.qa.exceptions.AccountNotFound;
 
 @Service
 public class AccountService {
@@ -47,7 +48,7 @@ public class AccountService {
     }
     
     public Account getOneAccount(long id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id).orElseThrow(AccountNotFound::new);
 	}
 
 	public Account updateAccount(Long id, Account account) {
@@ -64,6 +65,9 @@ public class AccountService {
 	public boolean removeAccount(Long id) {
 		repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
+		if (exists == false) {
+			throw new AccountNotFound();
+		}
         return !exists;
 	}
 

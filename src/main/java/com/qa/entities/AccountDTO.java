@@ -9,19 +9,19 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AccountDTO {
 	
-	@Getter()
-	@Setter()
+	@Getter
+	@Setter
 	private Long id;
 	
-	@Getter()
-	@Setter()
+	@Getter
+	@Setter
 	private String firstName;
 	
-	@Getter()
-	@Setter()
+	@Getter
+	@Setter
 	private String lastName;
 	
-	@Setter()
+	@Setter
 	private String Email;
 
 	

@@ -15,51 +15,51 @@ import com.qa.exceptions.AccountNotFound;
 
 @Service
 public class AccountService {
-	
+
 	private AccountRepo repo;
-	
+
 	private ModelMapper mapper;
 
-    private AccountDTO mapToDTO(Account account) {
-        return mapper.map(account, AccountDTO.class);
-    }
-    
-	@Autowired
-    public AccountService(AccountRepo repo, ModelMapper mapper) {
-        super();
-        this.repo = repo;
-        this.mapper = mapper;
-    }
-        
-    public Account addAccount(Account account) {
-    	return this.repo.save(account);
-    }
-
-    public List<AccountDTO> getAllAccounts() {
-        return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+	private AccountDTO mapToDTO(Account account) {
+		return mapper.map(account, AccountDTO.class);
 	}
-    
-    public Account searchEmail(String email) {
-    	return repo.findAccountByEmail(email);
-    }
-    
-    public Account searchName(String firstName){
-    	return repo.findByfirstName(firstName);
-    }
-    
-    public Account getOneAccount(long id) {
-        return repo.findById(id).orElseThrow(AccountNotFound::new);
+
+	@Autowired
+	public AccountService(AccountRepo repo, ModelMapper mapper) {
+		super();
+		this.repo = repo;
+		this.mapper = mapper;
+	}
+
+	public Account addAccount(Account account) {
+		return this.repo.save(account);
+	}
+
+	public List<AccountDTO> getAllAccounts() {
+		return repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
+	}
+
+	public Account searchEmail(String email) {
+		return repo.findAccountByEmail(email);
+	}
+
+	public Account searchName(String firstName) {
+		return repo.findByfirstName(firstName);
+	}
+
+	public Account getOneAccount(long id) {
+		return repo.findById(id).orElseThrow(AccountNotFound::new);
 	}
 
 	public Account updateAccount(Long id, Account account) {
 		Optional<Account> existingOptional = this.repo.findById(id);
 		Account existing = existingOptional.orElse(new Account());
-		
-        existing.setEmail(account.getEmail());
-        existing.setFirstName(account.getFirstName());
-        existing.setLastName(account.getLastName());
-        
-        return this.repo.save(existing);
+
+		existing.setEmail(account.getEmail());
+		existing.setFirstName(account.getFirstName());
+		existing.setLastName(account.getLastName());
+
+		return this.repo.save(existing);
 	}
 
 	public boolean removeAccount(Long id) {
@@ -68,7 +68,7 @@ public class AccountService {
 		if (exists == false) {
 			throw new AccountNotFound();
 		}
-        return !exists;
+		return !exists;
 	}
 
 }

@@ -40,4 +40,11 @@ public class ServiceTest {
 
 	}
 
+	@Test
+	public void testDelete() {
+
+		Mockito.doNothing().when(repo).delete(null);
+
+	}
+
 }

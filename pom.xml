@@ -68,6 +68,13 @@
         <artifactId>selenium-java</artifactId>
         <version>4.0.0</version>
     </dependency>
+    
+    <dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-boot-starter</artifactId>
+		<version>3.0.0</version>
+	</dependency>
+	
 	</dependencies>
 
 	<build>
@@ -76,7 +83,39 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.5</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>prepare-agent</goal>
+                </goals>
+                </execution>
+                <!-- attached to Maven test phase -->
+                <execution>
+                    <id>report</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 		</plugins>
 	</build>
-
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.host.url>http://localhost:9000</sonar.host.url>
+                <sonar.user>admin</sonar.user>
+                <sonar.password>admin</sonar.password>
+            </properties>
+        </profile>
+    </profiles>
 </project>

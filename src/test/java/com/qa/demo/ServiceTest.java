@@ -12,6 +12,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.qa.controllers.AccountService;
 import com.qa.entities.Account;
+import com.qa.repos.AccountRepo;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")

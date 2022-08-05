@@ -8,10 +8,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.demo.AccountRepo;
 import com.qa.entities.Account;
 import com.qa.entities.AccountDTO;
 import com.qa.exceptions.AccountNotFound;
+import com.qa.repos.AccountRepo;
 
 @Service
 public class AccountService {

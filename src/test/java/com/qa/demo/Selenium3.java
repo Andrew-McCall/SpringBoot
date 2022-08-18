@@ -27,7 +27,7 @@ public class Selenium3 {
 	}
 
 	@Test
-	public void homePage() throws InterruptedException {
+	public void homePage() {
 
 		driver.get("http://localhost:8090/home.html");
 		assertEquals("Home Page", driver.getTitle());
